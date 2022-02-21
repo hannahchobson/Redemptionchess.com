@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>RedemptionChess</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+  <link rel="icon" type="image/jpg" href="Untited_Artwork.jpg">
+</head>
+
+<body>
+  <nav class="zone blue sticky">
+    <img class ="logo-img" src="Untitled_Artwork.jpg" width="50" height="50" ALT="align box" ALIGN=CENTER>
+      <ul class="main-nav">
+          <li><a href="./RedemptionChess.html">Main Menu</a></li>
+          <li><a href="./NormalMode.html">Normal Mode</a></li>
+          <li><a href="./RedemptionMode.html">Redemption Mode</a></li>
+  </ul>
+  </nav>
+  <div class="container">
+      <img class="cover" src="Cover.jpg">
+      <div class="coverText"><h1>RedemptionChess</h1></div>
+  </div>
+  <div class="zone blue grid-wrapper">
+      <div class="card zone">
+          <div class="text">
+              <h1>Normal Mode</h1>
+              <p>Traditional chess</p>
+              <p>Player vs. Player </p>
+              <a href="./NormalMode.html">
+              <button>Play!</button>
+            </a>
+          </div>
+      </div>
+      <div class="card zone">
+          <div class="text">
+            <h1>Redemption Mode</h1>
+            <p>Player vs. Player Chess with a twist</p>
+            <p>Have the opportunity to buy pieces back</p>
+            <a href="./RedemptionMode.html">
+            <button>Play!</button>
+          </a>
+          </div>
+      </div>
+  </div>
+  <footer class="zone"><p>Hannah Hobson and Patrick Ocheltree Capstone 2022</a></p></footer>
+</div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAZWN_EAIYP4s4ulDZb_AoiR-z4JEl2dAc",
+    authDomain: "redemptionchess-589b5.firebaseapp.com",
+    projectId: "redemptionchess-589b5",
+    storageBucket: "redemptionchess-589b5.appspot.com",
+    messagingSenderId: "190728003065",
+    appId: "1:190728003065:web:50bc33ebd52576b7d8b128"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+</body>
+</html>

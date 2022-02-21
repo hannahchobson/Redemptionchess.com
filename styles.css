@@ -1,0 +1,174 @@
+body{
+	margin:  0 auto;
+	font-family:  Trojan Pro;
+}
+
+.zone {
+    color:#FFF;
+    font-size:2em;
+    border-radius:4px;
+    transition: all 0.3s linear;
+}
+
+.zone:hover {
+    -webkit-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    -moz-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    -o-box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+    box-shadow:rgba(0,0,0,0.8) 0px 5px 15px, inset rgba(0,0,0,0.15) 0px -10px 20px;
+}
+
+.main-nav {
+    /* creates a */
+    display: flex;
+    list-style: none;
+    margin: 0;
+    font-size: 0.7em;
+}
+
+a:hover {
+    color: #686de0;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-nav {
+        font-size: 0.5em;
+        padding: 0;
+    }
+}
+
+li {
+    padding: 20px;
+}
+
+a {
+    color: #f5f5f6;
+    text-decoration: none;
+}
+
+.logo-img{
+	float: right;
+	position: relative;
+	margin: 10px 15px 15px 10px;
+}
+
+.sticky {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+}
+.container {
+    /* vh = view height. We do this to make sure banner fills entire view */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cover {
+    width:100%;
+    height:100%;
+}
+.coverText {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+
+.coverText > h1 {
+    color: white;
+    font-size: 40px;
+}
+
+.grid-wrapper {
+    text-align: center;
+}
+
+.card {
+    height:  300px;
+    width:  300px;
+    margin:  0 7.5px;
+    background-color: #444;
+    display: inline-flex;
+    justify-content: center;
+
+}
+.card > img {
+    max-width: 100%;
+    height: auto;
+}
+.card h1 {
+    font-size: 1.5rem;
+}
+.card p {
+    font-size: 1rem;
+}
+.card > .text {
+    padding: 0 20px 20px;
+}
+
+button {
+    cursor: pointer;
+    background: gray;
+    border: 0;
+    font-size: 1rem;
+    color: white;
+    padding: 10px;
+    width: 200px;
+}
+
+button:hover {
+    background-color: #84888B;
+}
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: #A5ACB0;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+.blue {
+    background: #0A2240;
+}
+
+.player{
+    width: 100px;
+    height: 50px;
+    display:  grid;
+    background-color: #d1edf2;
+    align-items: left;
+    justify-content: left;
+}
+
+.player p { 
+    font-size: 1rem;
+
+}
+
+.player i {
+    font-size: 1rem;
+
+}
+
+.chess-board { border-spacing: 6; border-collapse: collapse; }
+.chess-board th { padding: .6em; }
+.chess-board th + th { border-bottom: 10px solid #000; }
+.chess-board th:first-child,
+.chess-board td:last-child { border-right: 10px solid #000; }
+.chess-board tr:last-child td { border-bottom: 10px solid #000; }
+.chess-board th:empty { border: empty; }
+.chess-board td { width: 2.25em; height: 2.25em; text-align: center; font-size: 32px; line-height: 0;}
+.chess-board .light { background: #d3d3d3; }
+.chess-board .dark { background: #a9a9a9; }
+.board-wrapper {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 10px;
+}
