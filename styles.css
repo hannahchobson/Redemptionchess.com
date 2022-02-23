@@ -137,34 +137,50 @@ footer p {
     background: #0A2240;
 }
 
-.player{
-    width:  25%;
-    height: 5%;
-    display: inline-block;
-}
-
-.player p { 
-    font-size: 1rem;
-
-}
-
-.player i {
-    font-size: 1rem;
-
-}
-
 .grey{
     background: #939799
 }
 
+.modal{
+    display: none;
+    position:  fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width:  100%;
+    height: 100%;
+    overflow:  auto;
+}
+
+.modal-content{
+    margin:  15% auto;
+    padding:  20px;
+    width:  80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 .chess-board { border-spacing: 6; border-collapse: collapse; }
 .chess-board th { padding: .8em; }
-.chess-board th + th { border-bottom: 10px solid #000; }
+.chess-board th + th { border-bottom: 0px solid #000; }
 .chess-board th:first-child,
-.chess-board td:last-child { border-right: 10px solid #000; }
-.chess-board tr:last-child td { border-bottom: 10px solid #000; }
+.chess-board td:last-child { border-right: 0px solid #000; }
+.chess-board tr:last-child td { border-bottom: 0px solid #000; }
 .chess-board th:empty { border: empty; }
-.chess-board td { width: 2em; height: 2em; text-align: center; font-size: 32px; line-height: 0;}
+.chess-board td { width: 2.25em; height: 2.25em; text-align: center; font-size: 32px; line-height: 0;}
 .chess-board .light { background: #d3d3d3; }
 .chess-board .dark { background: #a9a9a9; }
 .board-wrapper {
