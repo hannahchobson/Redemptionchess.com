@@ -5,7 +5,8 @@ let curHeldPiece;
 let curHeldPieceStartingPosition;
 
 function startGame() {
-    const starterPosition = [['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
+    const starterPosition = 
+    [['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
     ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
     ['.', '.', '.', '.', '.', '.', '.', '.'],
     ['.', '.', '.', '.', '.', '.', '.', '.'],
@@ -358,6 +359,5 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
         return false;
     }
 }
-
 startGame();
 setPieceHoldEvents();

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>RedemptionChess</title>
-  <link rel="stylesheet" type="text/css" href="./style2.css">
+  <link rel="stylesheet" type="text/css" href="./style3.css">
   <link rel="icon" type="image/jpg" href="Untited_Artwork.jpg">
 </head>
 
@@ -16,19 +16,39 @@
   </ul>
   </nav>
   <div class="grey board-wrapper">
+    <h1>Redemption Mode</h1>
     <div class="option-nav">
         <div id="player-nav">
             Player: <span id="player"></span>
         </div>
-        <div id="option" class="btn">
-            <i class="fa fa-cog" aria-hidden="true"></i>
-            <span class="tooltiptext">OPTION</span>
-        </div>
-        <div id="undo-btn" class="btn">
-            <i class="fa fa-undo" aria-hidden="true"></i>
-            <span class="tooltiptext">UNDO</span>
+    </div>
+    <div class = "points">
+
+    <div class="dropdown" style="float:right">
+        <img src="211751_gear_icon.png" width="40" height="40" ALT="align box" ALIGN=CENTER></img>
+        <div class="dropdown-content">
+            <a href="./RedemptionMode.html">New Game</a>
+            <a href="./index.html">Home</a>
+            <a class="button" href="#myPopup">Redemption Market</a>
+      </div>
+    </div>
+    <div class="popup" onclick="myFunction()">
+        <div class="popuptext" id="myPopup">
+            <span class="close">&times;</span>
+            <a class="button" href="white_pawn.png">20 points</a>
+            <a class="button" href="white_rook.png">40 points</a>
+            <a class="button" href="white_bishop.png">40 points</a>
+            <a class="button" href="white_knight.png">50 points</a>
+            <a class="button" href="white_queen.png">75 points</a>
         </div>
     </div>
+    <script>
+        // When the user clicks on <div>, open the popup
+        function myFunction() {
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+        }
+    </script>
     <div id="main">
         <div class="board">
             <div class="row">
