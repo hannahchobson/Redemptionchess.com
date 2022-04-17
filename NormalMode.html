@@ -4,6 +4,13 @@
   <title>RedemptionChess</title>
   <link rel="stylesheet" type="text/css" href="./style2.css">
   <link rel="icon" type="image/jpg" href="Untited_Artwork.jpg">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+  </script>
 </head>
 
 <body>
@@ -17,12 +24,35 @@
   </nav>
   <div class="grey board-wrapper">
     <h1>Normal Mode</h1>
-    <div class="option-nav">
-        <div id="player-nav">
-            Player: <span id="player"></span>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-header">
+                    <h5 class="modal-title">Instructions</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to Normal Mode!</p>
+                    <p>Play normal chess against your friends on the same device. </p>
+                </div>
+            </div>
         </div>
     </div>
-   <div class="dropdown" style="float:right">
+<!--     <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="modal-header">
+                    <h5 class="modal-title">Instructions</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome to Normal Mode!</p>
+                    <p>Play normal chess against your friends on the same device. </p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="dropdown" style="float:right">
         <img src="211751_gear_icon.png" width="40" height="40" ALT="align box" ALIGN=CENTER></img>
         <div class="dropdown-content">
             <a href="./NormalMode.html">New Game</a>
@@ -31,6 +61,9 @@
     </div>
     <div id="main">
         <div class="board">
+            <div id="player-nav">
+                <span id="player">Player: </span>
+            </div>
             <div class="row">
                 <div id="11" class="square light_grey"></div>
                 <div id="12" class="square dark_grey"></div>

@@ -4,6 +4,7 @@ let curPlayer;
 let curHeldPiece;
 let curHeldPieceStartingPosition;
 
+
 function startGame() {
     const starterPosition = 
     [['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
@@ -158,8 +159,10 @@ function movePiece(piece, startingPosition, endingPosition) {
                     curPlayer = 'black';
                 } else {
                     curPlayer = 'white';
-                }
+
+                }         
         }
+
     }
 }
 /*
@@ -321,6 +324,8 @@ function validatePathIsBlocked(startingPosition, endingPosition) {
         return false;
     } else {
         // enemy piece has been captured
+        const destinationPiece = destinationSquare.querySelector('.piece').id;
+        PiecetoGraveyard(destinationPiece);
     }
 
     return true;
@@ -359,5 +364,10 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
         return false;
     }
 }
+
+function PiecetoGraveyard(enemyPiece){
+    
+}
+
 startGame();
 setPieceHoldEvents();
