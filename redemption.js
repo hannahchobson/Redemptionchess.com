@@ -194,10 +194,14 @@ function movePiece(piece, startingPosition, endingPosition) {
                 // check if is check/checkmate
 
                 if (curPlayer == 'white') {
-                    document.getElementById('players').src = 'black_king.png';
+                    var img = document.createElement("img");
+                    img.src = 'black_king.png';
+                    $(players).html(img);
                     curPlayer = 'black';
                 } else {
-                    document.getElementById('players').src = 'white_king.png';
+                    var img = document.createElement("img");
+                    img.src = 'white_king.png';
+                    $(players).html(img);
                     curPlayer = 'white';
                 } 
         }
@@ -226,26 +230,22 @@ function validateMovement(startingPosition, endingPosition) {
 }
 
 function updateGraveyard(pieceType){
+    var img = document.createElement("img");
     if(pieceType == 'p'){
-        document.getElementById('graveyard1').src = 'black_pawn.png';
+        img.src = 'black_pawn.png';
+        $(graveyard1).html(img);    
     }
     if(pieceType == 'P'){
-        var img = document.createElement('img');
         img.src = 'white_pawn.png';
-        var block = document.getElementById('graveyard2');
-        block.appendChild(img);
+        $(graveyard2).html(img);    
     }
-        if(pieceType == 'r'){
-        var img = document.createElement('img');
+    if(pieceType == 'r'){
         img.src = 'black_rook.png';
-        var block = document.getElementById('graveyard1');
-        block.appendChild(img);
+        $(graveyard1).html(img);    
     }
     if(pieceType == 'R'){
-        var img = document.createElement('img');
         img.src = 'white_rook.png';
-        var block = document.getElementById('graveyard2');
-        block.appendChild(img);
+        $(graveyard2).html(img);    
     }
 }
 
@@ -328,6 +328,7 @@ function validatePawnMovement(pawnColor, startingPosition, endingPosition) {
             // is enemy piece diagonal to player
             if (isEnemyPieceOnEndingPosition(endingPosition)) {
                 isCapture = true;
+ 
             }
 
         }
@@ -471,6 +472,7 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
         // checks if piece is white or black (if black pawn is taken by white pawn, white pawn will show on board)
         if (destinationPiece == destinationPiece.toUpperCase() && curPlayer == 'white' || destinationPiece == destinationPiece.toLowerCase() && curPlayer == 'black') {
             // put score values for blackScore / whiteScore here
+
             switch(destinationPiece){
                 // add score for white
                 case 'P': $(score3).html(whiteScore += 10);
@@ -497,9 +499,9 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
                 break;
             }
             return true;
-            updateGraveyard(destinationPiece);
         } else {
             return false;
+
         }        
     } else {
         return false;

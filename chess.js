@@ -141,7 +141,6 @@ function setPieceHoldEvents() {
 }
 
 
-
 //checks movement
 function movePiece(piece, startingPosition, endingPosition) {
     // move validations to validateMovement()
@@ -160,10 +159,14 @@ function movePiece(piece, startingPosition, endingPosition) {
                 // check if is check/checkmate
 
                 if (curPlayer == 'white') {
-                    document.getElementById('players').src = 'black_king.png';
+                    var img = document.createElement("img");
+                    img.src = 'black_king.png';
+                    $(players).html(img);
                     curPlayer = 'black';
                 } else {
-                    document.getElementById('players').src = 'white_king.png';
+                    var img = document.createElement("img");
+                    img.src = 'white_king.png';
+                    $(players).html(img);
                     curPlayer = 'white';
                 } 
         }
@@ -271,6 +274,7 @@ function validatePawnMovement(pawnColor, startingPosition, endingPosition) {
             // is enemy piece diagonal to player
             if (isEnemyPieceOnEndingPosition(endingPosition)) {
                 isCapture = true;
+ 
             }
 
         }
@@ -414,39 +418,16 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
         // checks if piece is white or black (if black pawn is taken by white pawn, white pawn will show on board)
         if (destinationPiece == destinationPiece.toUpperCase() && curPlayer == 'white' || destinationPiece == destinationPiece.toLowerCase() && curPlayer == 'black') {
             // put score values for blackScore / whiteScore here
-            switch(destinationPiece){
-                // add score for white
-                case 'P': $(score3).html(whiteScore += 10);
-                break;
-                case 'R': $(score3).html(whiteScore += 20);
-                break;
-                case 'N': $(score3).html(whiteScore += 30);
-                break;
-                case 'B': $(score3).html(whiteScore += 20);
-                break;
-                case 'Q': $(score3).html(whiteScore += 50);
-                break;
-
-                // add score for black
-                case 'p': $(score4).html(blackScore += 10);
-                break;
-                case 'r': $(score4).html(blackScore += 20);
-                break;
-                case 'n': $(score4).html(blackScore += 30);
-                break;
-                case 'b': $(score4).html(blackScore += 20);
-                break;
-                case 'q': $(score4).html(blackScore += 50);
-                break;
-            }
             return true;
         } else {
             return false;
+
         }        
     } else {
         return false;
     }
 }
+
 
 
 
