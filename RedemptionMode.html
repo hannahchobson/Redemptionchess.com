@@ -52,34 +52,26 @@
                 <div class="popup">
                     <a class="close" href="#">&times;</a>
                     <span id="score1">White Score: </span><span id="score3">0pts</span>
-                    <button type="button"> <img src="white_pawn.png" />20 points</button>
-                    <button type="button"> <img src="white_rook.png" />40 points</button>
-                    <button type="button"> <img src="white_bishop.png" />40 points</button>
-                    <button type="button"> <img src="white_knight.png" />50 points</button>
-                    <button type="button"> <img src="white_queen.png" />75 points</button>
+                    <button type="button" id="pawn"> <img src="white_pawn.png" />20 points</button>
+                    <button type="button" id="rook"> <img src="white_rook.png" />40 points</button>
+                    <button type="button" id="bishop"> <img src="white_bishop.png" />40 points</button>
+                    <button type="button" id="knight"> <img src="white_knight.png" />50 points</button>
+                    <button type="button" id="queen"> <img src="white_queen.png" />75 points</button>
                 </div>
             </div>
             <div id="myPopup1" class="overlay">
                 <div class="popup">
                     <a class="close" href="#">&times;</a>
                     <span id="score2">Black Score: </span><span id="score4">0pts</span>
-                    <button type="button"> <img src="white_pawn.png" />20 points</button>
-                    <button type="button"> <img src="white_rook.png" />40 points</button>
-                    <button type="button"> <img src="white_bishop.png" />40 points</button>
-                    <button type="button"> <img src="white_knight.png" />50 points</button>
-                    <button type="button"> <img src="white_queen.png" />75 points</button>
+                    <button type="button" id="pawn_button"> <img src="black_pawn.png" />20 points</button>
+                    <button type="button" id="rook_button"> <img src="black_rook.png" />40 points</button>
+                    <button type="button" id="bishop_button"> <img src="black_bishop.png" />40 points</button>
+                    <button type="button" id="knight_button"> <img src="black_knight.png" />50 points</button>
+                    <button type="button" id="queen_button"> <img src="black_queen.png" />75 points</button>
                 </div>
             </div>
       </div>
     </div>
-    
-<!--     <script>
-        // When the user clicks on <div>, open the popup
-        function myFunction() {
-          var popup = document.getElementById("myPopup");
-          popup.classList.toggle("show");
-        }
-    </script> -->
     <span id="score1">White Score: </span><span id="score3">0pts</span>
 
     <div class="graveyard1">
@@ -96,9 +88,8 @@
     </div>
     <div id="main">
         <div id="player-nav">
-            <span id="player">Player: </span><span id="players"></span>
-<!--             <img src= 'white_king.png'>
- -->        </div>
+            <span id="player">Player: </span><span id="players"> <img src="white_king.png" /></span>
+        </div>
         <div class="board">        
             <div class="row">
                 <div id="11" class="square light_grey"></div>

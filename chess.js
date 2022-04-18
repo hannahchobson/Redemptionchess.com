@@ -4,10 +4,9 @@ let curPlayer;
 let curHeldPiece;
 let curHeldPieceStartingPosition;
 
-
+// [0] = x coord, [1] = y coord
 function startGame() {
-    const starterPosition = 
-    [['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
+    const starterPosition = [['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
     ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
     ['.', '.', '.', '.', '.', '.', '.', '.'],
     ['.', '.', '.', '.', '.', '.', '.', '.'],
@@ -36,6 +35,7 @@ function loadPosition(position, playerToMove) {
     }
 }
 
+//changes piece ID, doesn't place it
 function loadPiece(piece, position) {
     const squareElement = document.getElementById(`${position[0]}${position[1]}`);
 
@@ -48,6 +48,7 @@ function loadPiece(piece, position) {
     squareElement.appendChild(pieceElement);
 }
 
+// gets the image for each piece
 function getPieceImageSource(piece) {
     switch (piece) {
         case 'R': return 'black_rook.png';
@@ -108,7 +109,7 @@ function setPieceHoldEvents() {
 
         if (curHeldPiece != null) {
             const boardElement = document.querySelector('.board');
-
+            // mouse or scrolling
             if ((event.clientX > boardElement.offsetLeft - window.scrollX && event.clientX < boardElement.offsetLeft + boardElement.offsetWidth - window.scrollX) &&
                 (event.clientY > boardElement.offsetTop - window.scrollY && event.clientY < boardElement.offsetTop + boardElement.offsetHeight - window.scrollY)) {
                     const mousePositionOnBoardX = event.clientX - boardElement.offsetLeft + window.scrollX;
@@ -139,6 +140,9 @@ function setPieceHoldEvents() {
     });
 }
 
+
+
+//checks movement
 function movePiece(piece, startingPosition, endingPosition) {
     // move validations to validateMovement()
     const boardPiece = curBoard[startingPosition[0]][startingPosition[1]];
@@ -154,18 +158,15 @@ function movePiece(piece, startingPosition, endingPosition) {
                 destinationSquare.appendChild(piece);
 
                 // check if is check/checkmate
-                var curPlayerHTML = document.createElement("p");
 
                 if (curPlayer == 'white') {
-                    $('#players').html('black_king.png');
+                    document.getElementById('players').src = 'black_king.png';
                     curPlayer = 'black';
                 } else {
-                    $('#players').html('white_king.png');
+                    document.getElementById('players').src = 'white_king.png';
                     curPlayer = 'white';
-
-                }       
+                } 
         }
-
     }
 }
 /*
@@ -190,13 +191,18 @@ function validateMovement(startingPosition, endingPosition) {
     }
 }
 
+
+// logic to see if the move is valid for Bishop
 function validateBishopMovement(startingPosition, endingPosition) {
     if (endingPosition[0] - endingPosition[1] == startingPosition[0] - startingPosition[1] ||
         endingPosition[0] + endingPosition[1] == startingPosition[0] + startingPosition[1]) {
             if (!validatePathIsBlocked(startingPosition, endingPosition)) {
                 return false;
             }
-            // validate if move puts own king in check
+            // validate if move puts own king in check (write code here)
+            if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
             return true;
     } else {
         return false;
@@ -208,7 +214,10 @@ function validateRookMovement(startingPosition, endingPosition) {
         if (!validatePathIsBlocked(startingPosition, endingPosition)) {
             return false;
         }
-        // validate if move puts own king in check
+        // validate if move puts own king in check (write code here)
+        if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
         return true;
     } else {
         return false;
@@ -220,8 +229,12 @@ function validateKingMovement(startingPosition, endingPosition) {
         if (isFriendlyPieceOnEndingPosition(endingPosition)) {
             return false;
         }
-        // validate if move puts own king in check
+        // validate if move puts own king in check (write code here)
         // validate castling
+        if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
+
         return true;
     } else {
         return false;
@@ -235,42 +248,77 @@ function validateQueenMovement(startingPosition, endingPosition) {
             if (!validatePathIsBlocked(startingPosition, endingPosition)) {
                 return false;
             }
-            // validate if move puts own king in check
+            if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
+            // validate if move puts own king in check (write code here)
             return true;
     } else {
         return false;
     }
 }
 
+// 0 to 7 for up and down (0 is top, 7 is bottom)
+
 function validatePawnMovement(pawnColor, startingPosition, endingPosition) {
-    direction = pawnColor == 'black' ? 1 : -1;
+    direction = pawnColor == 'black' ? 1 : -1; //negative == black, white == positive
 
     let isCapture = false;
 
+    //capture piece
     if (endingPosition[0] == startingPosition[0] + direction &&
         [startingPosition[1] - 1, startingPosition[1] + 1].includes(endingPosition[1])) {
-            // validate if is en passant
+            // is enemy piece diagonal to player
             if (isEnemyPieceOnEndingPosition(endingPosition)) {
                 isCapture = true;
             }
+
         }
 
-    // validate if is promotion
+    //en passant code
+    //checks if piece is parallel to player (moves that way?)
+    if(endingPosition[0] == startingPosition[0] &&
+        [startingPosition[1] - 1, startingPosition[1] + 1].includes(endingPosition[1])){
+            // takes pawn if parallel
+            if(isEnemyPieceOnEndingPosition(endingPosition) && (endingPosition[0] == 3 && pawnColor == 'white' ) || (endingPosition[0] == 4 && pawnColor == 'black')){
+                isCapture = true;
+                // move diagonal (move up 1 and left/right 1) (problem: takes any piece that's parallel, not just pawn)
+                
+            }
+        }
+
+    // 0 == black end, 7 == white end
+    // validate if is promotion (current code freezes piece, sends it back to previous space)
+    // if(pawnColor == 'white' && endingPosition[0] == 0){
+    //     loadPiece('q', endingPosition);
+    //     loadPosition(endingPosition, curPlayer);
+    // }
+
     let isFirstMove = false;
 
+    // is pawn in initial starting spot
     if ((pawnColor == 'white' && startingPosition[0] == 6) || (pawnColor == 'black' && startingPosition[0] == 1)) {
         isFirstMove = true;
     }
 
+    //[0] == x coord, [1] == y cord
+    // movement
     if (((endingPosition[0] == startingPosition[0] + direction || (endingPosition[0] == startingPosition[0] + direction * 2 && isFirstMove)) &&
          endingPosition[1] == startingPosition[1]) || isCapture) {
+             //if friendly is on space ahead
             if (isFriendlyPieceOnEndingPosition(endingPosition)) {
                 return false;
+                //if enemy is blocking space ahead
             } else if (!isCapture && isEnemyPieceOnEndingPosition(endingPosition)) {
                 return false;
+            } 
+            // promotion
+            else if (endingPosition == 0 &&  pawnColor == 'white') {
+                loadPiece('q', endingPosition);
+                loadPosition(endingPosition, 'white');
             }
 
-            // validate if move puts own king in check
+            // validate if move puts own king in check (write code here)
             return true;
     } else {
         return false;
@@ -278,12 +326,16 @@ function validatePawnMovement(pawnColor, startingPosition, endingPosition) {
 }
 
 function validateKnightMovement(startingPosition, endingPosition) {
+    // moves up 2, one left/right (knight movement)
     if (([-2, 2].includes(endingPosition[0] - startingPosition[0]) && [-1, 1].includes(endingPosition[1] - startingPosition[1])) || 
         ([-2, 2].includes(endingPosition[1] - startingPosition[1]) && [-1, 1].includes(endingPosition[0] - startingPosition[0]))) {
             if (isFriendlyPieceOnEndingPosition(endingPosition)) {
                 return false;
             }
-            // validate if move puts own king in check
+            // validate if move puts own king in check (write code here)
+            if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
             return true;
     } else {
         return false;
@@ -327,13 +379,12 @@ function validatePathIsBlocked(startingPosition, endingPosition) {
         return false;
     } else {
         // enemy piece has been captured
-        const destinationPiece = destinationSquare.querySelector('.piece').id;
-        PiecetoGraveyard(destinationPiece);
     }
 
     return true;
 }
 
+// is ally on square for heldPiece
 function isFriendlyPieceOnEndingPosition(endingPosition) {
     const destinationSquare = document.getElementById(`${endingPosition[0] + 1}${endingPosition[1] + 1}`);
 
@@ -351,15 +402,44 @@ function isFriendlyPieceOnEndingPosition(endingPosition) {
     }
 }
 
+// is opponent on square for heldPiece
 function isEnemyPieceOnEndingPosition(endingPosition) {
     const destinationSquare = document.getElementById(`${endingPosition[0] + 1}${endingPosition[1] + 1}`);
 
     if (destinationSquare.children.length > 0) {
+        // determines what the piece is
         const destinationPiece = destinationSquare.querySelector('.piece').id;
-    
-        if (destinationPiece == destinationPiece.toUpperCase() && curPlayer == 'white' ||
-            destinationPiece == destinationPiece.toLowerCase() && curPlayer == 'black') {
-                return true;
+
+
+        // checks if piece is white or black (if black pawn is taken by white pawn, white pawn will show on board)
+        if (destinationPiece == destinationPiece.toUpperCase() && curPlayer == 'white' || destinationPiece == destinationPiece.toLowerCase() && curPlayer == 'black') {
+            // put score values for blackScore / whiteScore here
+            switch(destinationPiece){
+                // add score for white
+                case 'P': $(score3).html(whiteScore += 10);
+                break;
+                case 'R': $(score3).html(whiteScore += 20);
+                break;
+                case 'N': $(score3).html(whiteScore += 30);
+                break;
+                case 'B': $(score3).html(whiteScore += 20);
+                break;
+                case 'Q': $(score3).html(whiteScore += 50);
+                break;
+
+                // add score for black
+                case 'p': $(score4).html(blackScore += 10);
+                break;
+                case 'r': $(score4).html(blackScore += 20);
+                break;
+                case 'n': $(score4).html(blackScore += 30);
+                break;
+                case 'b': $(score4).html(blackScore += 20);
+                break;
+                case 'q': $(score4).html(blackScore += 50);
+                break;
+            }
+            return true;
         } else {
             return false;
         }        
@@ -368,9 +448,7 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
     }
 }
 
-function PiecetoGraveyard(enemyPiece){
-    
-}
+
 
 startGame();
 setPieceHoldEvents();

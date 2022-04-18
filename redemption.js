@@ -194,12 +194,11 @@ function movePiece(piece, startingPosition, endingPosition) {
                 // check if is check/checkmate
 
                 if (curPlayer == 'white') {
-                    $('#players').html('black_king.png');
+                    document.getElementById('players').src = 'black_king.png';
                     curPlayer = 'black';
                 } else {
-                    $('#players').html('white_king.png');
+                    document.getElementById('players').src = 'white_king.png';
                     curPlayer = 'white';
-
                 } 
         }
     }
@@ -223,6 +222,30 @@ function validateMovement(startingPosition, endingPosition) {
         case 'K': return validateKingMovement(startingPosition, endingPosition);
         case 'p': return validatePawnMovement('white', startingPosition, endingPosition);
         case 'P': return validatePawnMovement('black', startingPosition, endingPosition);
+    }
+}
+
+function updateGraveyard(pieceType){
+    if(pieceType == 'p'){
+        document.getElementById('graveyard1').src = 'black_pawn.png';
+    }
+    if(pieceType == 'P'){
+        var img = document.createElement('img');
+        img.src = 'white_pawn.png';
+        var block = document.getElementById('graveyard2');
+        block.appendChild(img);
+    }
+        if(pieceType == 'r'){
+        var img = document.createElement('img');
+        img.src = 'black_rook.png';
+        var block = document.getElementById('graveyard1');
+        block.appendChild(img);
+    }
+    if(pieceType == 'R'){
+        var img = document.createElement('img');
+        img.src = 'white_rook.png';
+        var block = document.getElementById('graveyard2');
+        block.appendChild(img);
     }
 }
 
@@ -305,13 +328,11 @@ function validatePawnMovement(pawnColor, startingPosition, endingPosition) {
             // is enemy piece diagonal to player
             if (isEnemyPieceOnEndingPosition(endingPosition)) {
                 isCapture = true;
-                // if (isCapture == true && curPlayer == 'white'){
-                //     ('#graveyard2').html('white_pawn.png')
-                // }
             }
+
         }
 
-     //en passant code
+    //en passant code
     //checks if piece is parallel to player (moves that way?)
     if(endingPosition[0] == startingPosition[0] &&
         [startingPosition[1] - 1, startingPosition[1] + 1].includes(endingPosition[1])){
@@ -446,6 +467,7 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
         // determines what the piece is
         const destinationPiece = destinationSquare.querySelector('.piece').id;
 
+
         // checks if piece is white or black (if black pawn is taken by white pawn, white pawn will show on board)
         if (destinationPiece == destinationPiece.toUpperCase() && curPlayer == 'white' || destinationPiece == destinationPiece.toLowerCase() && curPlayer == 'black') {
             // put score values for blackScore / whiteScore here
@@ -474,7 +496,8 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
                 case 'q': $(score4).html(blackScore += 50);
                 break;
             }
-                return true;
+            return true;
+            updateGraveyard(destinationPiece);
         } else {
             return false;
         }        
@@ -586,3 +609,4 @@ function putRookBack(){
 
 startGame();
 setPieceHoldEvents();
+setRedemptionMarket();
