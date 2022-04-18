@@ -140,6 +140,42 @@ function setPieceHoldEvents() {
     });
 }
 
+//function to set pieces after button click 
+function setRedemptionMarket(){
+    document.getElementById("pawn_button").addEventListener("click", function(){
+        putPawnBack();
+    });
+    document.getElementById("rook_button").addEventListener("click", function(){
+        putRookBack();
+    });
+    document.getElementById("bishop_button").addEventListener("click", function(){
+        putBishopBack();
+    });
+    document.getElementById("knight_button").addEventListener("click", function(){
+        putKnightBack();
+    });
+    document.getElementById("queen_button").addEventListener("click", function(){
+        putQueenBack();
+    });
+    document.getElementById("pawn").addEventListener("click", function(){
+        putPawnBack();
+    });
+    document.getElementById("rook").addEventListener("click", function(){
+        putRookBack();
+    });
+    document.getElementById("bishop").addEventListener("click", function(){
+        putBishopBack();
+    });
+    document.getElementById("knight").addEventListener("click", function(){
+        putKnightBack();
+    });
+    document.getElementById("queen").addEventListener("click", function(){
+        putQueenBack();
+    });
+
+}
+
+
 //checks movement
 function movePiece(piece, startingPosition, endingPosition) {
     // move validations to validateMovement()
@@ -456,49 +492,6 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
 var blackScore = 0;
 var whiteScore = 0;
 
-
-//functions to update score (put in isEnemyPieceOnEndingPosition function)
-
-// function pieceTaken(){
-//     // if(whiteArmy.pawn.checkMove === null){
-//     //     blackScore += 10;
-//     // }
-//     // if no pawn moves, then piece is taken
-//     if(destinationPiece.toLowerCase() == 'p' && curPlayer == 'black'){
-//         blackScore += 10;
-//     }
-//     if(destinationPiece.toUpperCase() == 'P' && curPlayer == 'white'){
-//         whiteScore += 10;
-//     }
-//     // if no queen moves, then piece is taken
-//     if(destinationPiece.toLowerCase() == 'q' && curPlayer == 'black'){
-//         blackScore += 50;
-//     }
-//     if(destinationPiece.toUpperCase() == 'Q' && curPlayer == 'white'){
-//         whiteScore += 50;
-//     }
-//     // if no bishop moves, then piece is taken
-//     if(destinationPiece.toLowerCase() == 'b' && curPlayer == 'black'){
-//         blackScore += 20;
-//     }
-//     if(destinationPiece.toUpperCase() == 'B' && curPlayer == 'white'){
-//         whiteScore += 20;
-//     }
-//     // if no knight moves, then piece is taken
-//     if(destinationPiece.toLowerCase == 'n' && curPlayer == 'black'){
-//         blackScore += 30;
-//     }
-//     if(destinationPiece.toUpperCase == 'N' && curPlayer == 'white'){
-//         whiteScore += 30;
-//     }
-//     // if no rook moves, then piece is taken
-//     if(destinationPiece.toLowerCase == 'r' && curPlayer == 'black'){
-//         blackScore += 20;
-//     }
-//     if(destinationPiece.toUpperCase == 'R' && curPlayer == 'white'){
-//         whiteScore += 20;
-//     }
-// }
 
 //make sure points are added to scoreboard (bank)
 //print it out for now
