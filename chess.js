@@ -154,13 +154,16 @@ function movePiece(piece, startingPosition, endingPosition) {
                 destinationSquare.appendChild(piece);
 
                 // check if is check/checkmate
+                var curPlayerHTML = document.createElement("p");
 
                 if (curPlayer == 'white') {
+                    $('#player').html('black_king.png');
                     curPlayer = 'black';
                 } else {
+                    $('#player').html('white_king.png');
                     curPlayer = 'white';
 
-                }         
+                }       
         }
 
     }

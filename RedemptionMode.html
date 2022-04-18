@@ -47,18 +47,20 @@
             <a href="./RedemptionMode.html">New Game</a>
             <a href="./index.html">Home</a>
             <a class="button" href="#myPopup">Redemption Market</a>
+            <div id="myPopup" class="overlay">
+                <div class="popup">
+                    <a class="close" href="#">&times;</a>
+                    <h1> White Score: 0pts </h1>
+                    <button type="button"> <img src="white_pawn.png" />20 points</button>
+                    <button type="button"> <img src="white_rook.png" />40 points</button>
+                    <button type="button"> <img src="white_bishop.png" />40 points</button>
+                    <button type="button"> <img src="white_knight.png" />50 points</button>
+                    <button type="button"> <img src="white_queen.png" />75 points</button>
+                </div>
+            </div>
       </div>
     </div>
-    <div class="popup" onclick="myFunction()">
-        <div class="popuptext" id="myPopup">
-            <span class="close">&times;</span>
-            <a class="button" href="white_pawn.png">20 points</a>
-            <a class="button" href="white_rook.png">40 points</a>
-            <a class="button" href="white_bishop.png">40 points</a>
-            <a class="button" href="white_knight.png">50 points</a>
-            <a class="button" href="white_queen.png">75 points</a>
-        </div>
-    </div>
+    
 <!--     <script>
         // When the user clicks on <div>, open the popup
         function myFunction() {
@@ -66,30 +68,25 @@
           popup.classList.toggle("show");
         }
     </script> -->
-    <span id="score1">White Score: </span>
+    <span id="score1">White Score: </span><span id="score3">0pts</span>
 
     <div class="graveyard1">
-        <div class = "rectangle light_grey"></div>
+        <div class = "rectangle light_grey">
+        </div>
     </div>
 
-    <span id="score2">Black Score: </span>
+    <span id="score2">Black Score: </span><span id="score4">0pts</span>
+
 
     <div class="graveyard2">
-        <div class = "rectangle dark_grey"></div>
+        <div class = "rectangle dark_grey">
+        </div>
     </div>
     <div id="main">
         <div id="player-nav">
-            <span id="player">Player: </span>
-            <img src = "white_king.png">
-            <script>
-                if(curPlayer == 'white'){
-                    document.getElementById("player").innerHTML = <img src="white_king.png">;
-                }
-                else{
-                    document.getElementById("player").innerHTML = <img src="black_king.png">;
-                }
-            </script>
-        </div>
+            <span id="player">Player: </span><span id="players"></span>
+<!--             <img src= 'white_king.png'>
+ -->        </div>
         <div class="board">        
             <div class="row">
                 <div id="11" class="square light_grey"></div>

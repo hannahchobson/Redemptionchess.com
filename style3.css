@@ -187,6 +187,10 @@ footer p {
     justify-content: center;
     align-items: center;
 }
+.graveyardimg{
+    display: inline-block;
+    vertical-align: middle;
+}
 
 .graveyard2 {
     float: right;
@@ -243,6 +247,11 @@ footer p {
     font-size: 32px;
     color: #000;
 }
+#player{
+    float:  center;
+    font-size: 32px;
+    color: #000;
+}
 #score_nav{
     display:  block;
     cursor:  default;
@@ -250,14 +259,27 @@ footer p {
     width: 200px;
     text-align: left;
     margin-top: 5px;
+    margin-right: 20px;
 }
 #score1{
     float:  left;
     font-size: 32px;
     color: #000;
 }
+#score3{
+    float:  left;
+    font-size: 32px;
+    color: #000;
+}
 #score2{
     float:  right;
+    margin-right: 40px;
+    font-size: 32px;
+    color: #000;
+}
+#score4{
+    float:  right;
+    margin-right: 40px;
     font-size: 32px;
     color: #000;
 }
@@ -298,57 +320,53 @@ footer p {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-/* Popup container */
-.popup {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-/* The actual popup (appears on top) */
-.popup .popuptext {
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
   visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
+  opacity: 0;
 }
-
-/* Popup arrow */
-.popup .popuptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
-.popup .show {
+.overlay:target {
   visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s
+  opacity: 1;
 }
 
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
 }
 /*========================================*/
 

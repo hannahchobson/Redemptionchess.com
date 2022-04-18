@@ -158,10 +158,13 @@ function movePiece(piece, startingPosition, endingPosition) {
                 // check if is check/checkmate
 
                 if (curPlayer == 'white') {
+                    $('#players').html('black_king.png');
                     curPlayer = 'black';
                 } else {
+                    $('#players').html('white_king.png');
                     curPlayer = 'white';
-                }
+
+                } 
         }
     }
 }
@@ -254,6 +257,9 @@ function validatePawnMovement(pawnColor, startingPosition, endingPosition) {
             // is enemy piece diagonal to player
             if (isEnemyPieceOnEndingPosition(endingPosition)) {
                 isCapture = true;
+                // if (isCapture == true && curPlayer == 'white'){
+                //     ('#graveyard2').html('white_pawn.png')
+                // }
             }
         }
 
@@ -394,18 +400,28 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
             // put score values for blackScore / whiteScore here
             switch(destinationPiece){
                 // add score for white
-                case 'P': $(score1).html(whiteScore += 10);
-                case 'R': $(score1).html(whiteScore += 20);
-                case 'N': $(score1).html(whiteScore += 30);
-                case 'B': $(score1).html(whiteScore += 20);
-                case 'Q': $(score1).html(whiteScore += 50);
+                case 'P': $(score3).html(whiteScore += 10);
+                break;
+                case 'R': $(score3).html(whiteScore += 20);
+                break;
+                case 'N': $(score3).html(whiteScore += 30);
+                break;
+                case 'B': $(score3).html(whiteScore += 20);
+                break;
+                case 'Q': $(score3).html(whiteScore += 50);
+                break;
 
                 // add score for black
-                case 'p': $(score2).html(blackScore += 10);
-                case 'r': $(score2).html(blackScore += 20);
-                case 'n': $(score2).html(blackScore += 30);
-                case 'b': $(score2).html(blackScore += 20);
-                case 'q': $(score2).html(blackScore += 50);
+                case 'p': $(score4).html(blackScore += 10);
+                break;
+                case 'r': $(score4).html(blackScore += 20);
+                break;
+                case 'n': $(score4).html(blackScore += 30);
+                break;
+                case 'b': $(score4).html(blackScore += 20);
+                break;
+                case 'q': $(score4).html(blackScore += 50);
+                break;
             }
                 return true;
         } else {
