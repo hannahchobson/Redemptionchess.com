@@ -259,6 +259,7 @@ footer p {
 }
 #score1{
     float:  left;
+    margin-right: 10px;
     font-size: 32px;
     color: #000;
 }
@@ -269,13 +270,13 @@ footer p {
 }
 #score2{
     float:  right;
-    margin-right: 40px;
+    margin-right: 10px;
     font-size: 32px;
     color: #000;
 }
 #score4{
     float:  right;
-    margin-right: 40px;
+    margin-right: 10px;
     font-size: 32px;
     color: #000;
 }
