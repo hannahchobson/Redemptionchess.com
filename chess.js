@@ -157,10 +157,10 @@ function movePiece(piece, startingPosition, endingPosition) {
                 var curPlayerHTML = document.createElement("p");
 
                 if (curPlayer == 'white') {
-                    $('#player').html('black_king.png');
+                    $('#players').html('black_king.png');
                     curPlayer = 'black';
                 } else {
-                    $('#player').html('white_king.png');
+                    $('#players').html('white_king.png');
                     curPlayer = 'white';
 
                 }       

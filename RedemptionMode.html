@@ -46,11 +46,23 @@
         <div class="dropdown-content">
             <a href="./RedemptionMode.html">New Game</a>
             <a href="./index.html">Home</a>
-            <a class="button" href="#myPopup">Redemption Market</a>
+            <a class="button" href="#myPopup"> White Redemption Market</a>
+            <a class="button" href="#myPopup1"> Black Redemption Market</a>
             <div id="myPopup" class="overlay">
                 <div class="popup">
                     <a class="close" href="#">&times;</a>
-                    <h1> White Score: 0pts </h1>
+                    <span id="score1">White Score: </span><span id="score3">0pts</span>
+                    <button type="button"> <img src="white_pawn.png" />20 points</button>
+                    <button type="button"> <img src="white_rook.png" />40 points</button>
+                    <button type="button"> <img src="white_bishop.png" />40 points</button>
+                    <button type="button"> <img src="white_knight.png" />50 points</button>
+                    <button type="button"> <img src="white_queen.png" />75 points</button>
+                </div>
+            </div>
+            <div id="myPopup1" class="overlay">
+                <div class="popup">
+                    <a class="close" href="#">&times;</a>
+                    <span id="score2">Black Score: </span><span id="score4">0pts</span>
                     <button type="button"> <img src="white_pawn.png" />20 points</button>
                     <button type="button"> <img src="white_rook.png" />40 points</button>
                     <button type="button"> <img src="white_bishop.png" />40 points</button>

@@ -198,6 +198,9 @@ function validateBishopMovement(startingPosition, endingPosition) {
                 return false;
             }
             // validate if move puts own king in check (write code here)
+            if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
             return true;
     } else {
         return false;
@@ -210,6 +213,9 @@ function validateRookMovement(startingPosition, endingPosition) {
             return false;
         }
         // validate if move puts own king in check (write code here)
+        if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
         return true;
     } else {
         return false;
@@ -223,6 +229,9 @@ function validateKingMovement(startingPosition, endingPosition) {
         }
         // validate if move puts own king in check (write code here)
         // validate castling
+        if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
 
         return true;
     } else {
@@ -236,6 +245,9 @@ function validateQueenMovement(startingPosition, endingPosition) {
         endingPosition[0] == startingPosition[0] || endingPosition[1] == startingPosition[1]) {
             if (!validatePathIsBlocked(startingPosition, endingPosition)) {
                 return false;
+            }
+            if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
             }
             // validate if move puts own king in check (write code here)
             return true;
@@ -321,6 +333,9 @@ function validateKnightMovement(startingPosition, endingPosition) {
                 return false;
             }
             // validate if move puts own king in check (write code here)
+            if (isEnemyPieceOnEndingPosition(endingPosition)) {
+                isCapture = true;
+            }
             return true;
     } else {
         return false;
