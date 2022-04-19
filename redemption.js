@@ -230,26 +230,8 @@ function validateMovement(startingPosition, endingPosition) {
 }
 
 function updateGraveyard(pieceType){
-    var img = document.createElement("img");
-    var block1 = document.getElementById('graveyard1');
-    var block2 = document.getElementById('graveyard2');
-
-    if(pieceType == 'p'){
-        img.src = 'black_pawn.png';
-        block1.appendChild(img);   
-    }
-    if(pieceType == 'P'){
-        img.src = 'white_pawn.png';
-        $(graveyard2).html(img);    
-    }
-    if(pieceType == 'r'){
-        img.src = 'black_rook.png';
-        block1.appendChild(img);   
-    }
-    if(pieceType == 'R'){
-        img.src = 'white_rook.png';
-        $(graveyard2).html(img);    
-    }
+    var img = getPieceImageSource(pieceType);
+    return img;
 }
 
 // logic to see if the move is valid for Bishop
@@ -278,6 +260,9 @@ function validateRookMovement(startingPosition, endingPosition) {
         if (isEnemyPieceOnEndingPosition(endingPosition)) {
                 isCapture = true;
             }
+        if(isCapture == true){
+            updateGraveyard('R');
+        }
         return true;
     } else {
         return false;
@@ -471,33 +456,66 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
         const destinationPiece = destinationSquare.querySelector('.piece').id;
 
 
+
+
         // checks if piece is white or black (if black pawn is taken by white pawn, white pawn will show on board)
         if (destinationPiece == destinationPiece.toUpperCase() && curPlayer == 'white' || destinationPiece == destinationPiece.toLowerCase() && curPlayer == 'black') {
             // put score values for blackScore / whiteScore here
 
             switch(destinationPiece){
                 // add score for white
-                case 'P': $(score3).html(whiteScore += 10);
+                case 'P': 
+                    $(score3).html(whiteScore += 10);
+                    var img = document.createElement("img");
+                    img.src = 'black_pawn.png';
+                    $(piecedead).append(img);
                 break;
                 case 'R': $(score3).html(whiteScore += 20);
+                    var img = document.createElement("img");
+                    img.src = 'black_rook.png';
+                    $(piecedead).append(img);
                 break;
                 case 'N': $(score3).html(whiteScore += 30);
+                    var img = document.createElement("img");
+                    img.src = 'black_knight.png';
+                    $(piecedead).append(img);
                 break;
                 case 'B': $(score3).html(whiteScore += 20);
+                    var img = document.createElement("img");
+                    img.src = 'black_bishop.png';
+                    $(piecedead).append(img);
                 break;
                 case 'Q': $(score3).html(whiteScore += 50);
+                    var img = document.createElement("img");
+                    img.src = 'black_queen.png';
+                    $(piecedead).append(img);
                 break;
 
                 // add score for black
                 case 'p': $(score4).html(blackScore += 10);
+                    var img = document.createElement("img");
+                    img.src = 'white_pawn.png';
+                    $(piecedead1).append(img);
                 break;
                 case 'r': $(score4).html(blackScore += 20);
+                    var img = document.createElement("img");
+                    img.src = 'white_rook.png';
+                    $(piecedead1).append(img);
                 break;
                 case 'n': $(score4).html(blackScore += 30);
+                    var img = document.createElement("img");
+                    img.src = 'white_knight.png';
+                    $(piecedead1).append(img);
                 break;
                 case 'b': $(score4).html(blackScore += 20);
+                    var img = document.createElement("img");
+                    img.src = 'white_bishop.png';
+                    $(piecedead1).append(img);
                 break;
                 case 'q': $(score4).html(blackScore += 50);
+                    var img = document.createElement("img");
+                    img.src = 'white_queen.png';
+                    $(piecedead1).append(img);
                 break;
             }
             return true;
