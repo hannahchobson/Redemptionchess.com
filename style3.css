@@ -157,6 +157,7 @@ footer p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .row {
@@ -186,6 +187,7 @@ footer p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
 }
 
 .graveyard2 {
@@ -199,6 +201,7 @@ footer p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
 }
 
 .rectangle {
@@ -240,7 +243,7 @@ footer p {
 }
 #player{
     float:  center;
-    margin-left: 150px;
+    margin-left: 90px;
     font-size: 32px;
     color: #000;
 }
@@ -259,17 +262,21 @@ footer p {
     margin-right: 20px;
 }
 #score1{
+    margin-top: 65px;
     float:  left;
     margin-right: 10px;
     font-size: 32px;
     color: #000;
+    margin-left: 70px;
 }
 #score3{
     float:  left;
+    margin-top: 65px;
     font-size: 32px;
     color: #000;
 }
 #score2{
+    margin-top: 65px;
     float:  right;
     margin-right: 10px;
     font-size: 32px;
@@ -277,7 +284,8 @@ footer p {
 }
 #score4{
     float:  right;
-    margin-right: 10px;
+    margin-top: 65px;
+    margin-right: 65px;
     font-size: 32px;
     color: #000;
 }
