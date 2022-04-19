@@ -231,9 +231,12 @@ function validateMovement(startingPosition, endingPosition) {
 
 function updateGraveyard(pieceType){
     var img = document.createElement("img");
+    var block1 = document.getElementById('graveyard1');
+    var block2 = document.getElementById('graveyard2');
+
     if(pieceType == 'p'){
         img.src = 'black_pawn.png';
-        $(graveyard1).html(img);    
+        block1.appendChild(img);   
     }
     if(pieceType == 'P'){
         img.src = 'white_pawn.png';
@@ -241,7 +244,7 @@ function updateGraveyard(pieceType){
     }
     if(pieceType == 'r'){
         img.src = 'black_rook.png';
-        $(graveyard1).html(img);    
+        block1.appendChild(img);   
     }
     if(pieceType == 'R'){
         img.src = 'white_rook.png';
@@ -327,8 +330,7 @@ function validatePawnMovement(pawnColor, startingPosition, endingPosition) {
         [startingPosition[1] - 1, startingPosition[1] + 1].includes(endingPosition[1])) {
             // is enemy piece diagonal to player
             if (isEnemyPieceOnEndingPosition(endingPosition)) {
-                isCapture = true;
- 
+                isCapture = true; 
             }
 
         }

@@ -240,6 +240,7 @@ footer p {
 }
 #player{
     float:  center;
+    margin-left: 150px;
     font-size: 32px;
     color: #000;
 }

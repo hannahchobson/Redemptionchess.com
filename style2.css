@@ -202,6 +202,7 @@ footer p {
     margin-top: 5px;
 }
 #player{
+    margin-left: 500px;
     float:  center;
     font-size: 32px;
     color: #000;
