@@ -4,6 +4,9 @@ let curPlayer;
 let curHeldPiece;
 let curHeldPieceStartingPosition;
 
+
+
+
 // [0] = x coord, [1] = y coord
 function startGame() {
     const starterPosition = [['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
@@ -141,39 +144,53 @@ function setPieceHoldEvents() {
 }
 
 //function to set pieces after button click 
-function setRedemptionMarket(){
-    document.getElementById("pawn_button").addEventListener("click", function(){
-        putPawnBack();
-    });
-    document.getElementById("rook_button").addEventListener("click", function(){
-        putRookBack();
-    });
-    document.getElementById("bishop_button").addEventListener("click", function(){
-        putBishopBack();
-    });
-    document.getElementById("knight_button").addEventListener("click", function(){
-        putKnightBack();
-    });
-    document.getElementById("queen_button").addEventListener("click", function(){
-        putQueenBack();
-    });
-    document.getElementById("pawn").addEventListener("click", function(){
-        putPawnBack();
-    });
-    document.getElementById("rook").addEventListener("click", function(){
-        putRookBack();
-    });
-    document.getElementById("bishop").addEventListener("click", function(){
-        putBishopBack();
-    });
-    document.getElementById("knight").addEventListener("click", function(){
-        putKnightBack();
-    });
-    document.getElementById("queen").addEventListener("click", function(){
-        putQueenBack();
-    });
+// function setRedemptionMarket(){
+//     const pawn = document.getElementById("pawn");
+//     pawn.addEventListener("click", function(){
+//         if(whiteScore >= 20){
+//             whiteScore -= 20;
+//             // load pawn back in board
+//             // loads pawn piece back in the constant "starter position area" ?
+//             loadPiece('p', starterPosition);
+//             loadPosition(startingPosition, curPlayer);
+//         }
+//     });
+//     const pawnButton = document.getElementById("pawn_button");
+//     pawnButton.addEventListener("click", function(){
+//         if(blackScore >= 20){
+//             blackScore -= 20;
+//             // load pawn back in board
+//             // loads pawn piece back in the constant "starter position area" ?
+//             loadPiece('P', starterPosition);
+//             loadPosition(startingPosition, curPlayer);
+//         }
+//     });
 
-}
+//     document.getElementById("rook_button").addEventListener("click", putRookBack());
+//     document.getElementById("bishop_button").addEventListener("click", function(){
+//         putBishopBack();
+//     });
+//     document.getElementById("knight_button").addEventListener("click", function(){
+//         putKnightBack();
+//     });
+//     document.getElementById("queen_button").addEventListener("click", function(){
+//         putQueenBack();
+//     });
+    
+//     document.getElementById("rook").addEventListener("click", function(){
+//         putRookBack();
+//     });
+//     document.getElementById("bishop").addEventListener("click", function(){
+//         putBishopBack();
+//     });
+//     document.getElementById("knight").addEventListener("click", function(){
+//         putKnightBack();
+//     });
+//     document.getElementById("queen").addEventListener("click", function(){
+//         putQueenBack();
+//     });
+
+// }
 
 
 //checks movement
@@ -260,9 +277,6 @@ function validateRookMovement(startingPosition, endingPosition) {
         if (isEnemyPieceOnEndingPosition(endingPosition)) {
                 isCapture = true;
             }
-        if(isCapture == true){
-            updateGraveyard('R');
-        }
         return true;
     } else {
         return false;
@@ -490,6 +504,9 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
                     img.src = 'black_queen.png';
                     $(piecedead).append(img);
                 break;
+                case 'K':
+                    if(!alert('GAME OVER')){window.location.reload();}
+                break;
 
                 // add score for black
                 case 'p': $(score4).html(blackScore += 10);
@@ -517,6 +534,10 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
                     img.src = 'white_queen.png';
                     $(piecedead1).append(img);
                 break;
+                case 'k':
+                    if(!alert('GAME OVER')){window.location.reload();}
+                break;
+
             }
             return true;
         } else {
@@ -628,6 +649,27 @@ function putRookBack(){
         loadPosition(startingPosition, curPlayer);
     }
 }
+
+let pawn = document.getElementById("pawn");
+pawn.addEventListener("click", function(){
+    if(whiteScore >= 20){
+        whiteScore -= 20;
+        // load pawn back in board
+        // loads pawn piece back in the constant "starter position area" ?
+        loadPiece('p', starterPosition);
+        loadPosition(startingPosition, curPlayer);
+    }
+});
+let pawnButton = document.getElementById("pawn_button");
+pawnButton.addEventListener("click", function(){
+    if(blackScore >= 20){
+        blackScore -= 20;
+        // load pawn back in board
+        // loads pawn piece back in the constant "starter position area" ?
+        loadPiece('P', starterPosition);
+        loadPosition(startingPosition, curPlayer);
+    }
+});
 
 startGame();
 setPieceHoldEvents();

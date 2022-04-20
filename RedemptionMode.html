@@ -24,6 +24,7 @@
   </nav>
   <div class="grey board-wrapper">
     <h1>Redemption Mode</h1>
+
     <div id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -52,7 +53,7 @@
                 <div class="popup">
                     <a class="close" href="#">&times;</a>
                     <span id="score1">White Score: </span><span id="score3">0pts</span>
-                    <button type="button" id="pawn"> <img src="white_pawn.png" />20 points</button>
+                    <button type="button" id="pawn" onclick="putPawnBack()"> <img src="white_pawn.png" />20 points</button>
                     <button type="button" id="rook"> <img src="white_rook.png" />40 points</button>
                     <button type="button" id="bishop"> <img src="white_bishop.png" />40 points</button>
                     <button type="button" id="knight"> <img src="white_knight.png" />50 points</button>
@@ -72,6 +73,14 @@
             </div>
       </div>
     </div>
+    <div id="endPopup" class="overlay">
+        <div class="popup">
+            <a class="close" href="#">&times;</a>
+            <h2 class="modal-title">GAME OVER</h2>
+            <button type="button" href="./index.html">Return Home</button>
+            <button type="button" href="./RedemptionMode.html">Restart Game</button>
+        </div>
+    </div>
     <span id="score1">White Score: </span>
     <span id="score3"> 0pts</span>
 
@@ -80,12 +89,8 @@
             <span id="piecedead"></span>
         </div>
     </div>
-
     <span id="score4">0pts</span>
     <span id="score2">Black Score: </span>
-
-
-
     <div class="graveyard2">
         <div class = "rectangle dark_grey">
             <span id="piecedead1"> </span>
