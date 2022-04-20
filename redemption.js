@@ -4,7 +4,41 @@ let curPlayer;
 let curHeldPiece;
 let curHeldPieceStartingPosition;
 
+var img1 = document.createElement("img1");
+img1.src = 'black_pawn.png';
 
+var img2 = document.createElement("img2");
+img2.src = 'white_pawn.png';
+
+var img3 = document.createElement("img3");
+img3.src = 'black_rook.png';
+
+var img4 = document.createElement("img4");
+img4.src = 'white_rook.png';
+
+var img5 = document.createElement("img5");
+img5.src = 'black_knight.png';
+
+var img6 = document.createElement("img6");
+img6.src = 'white_knight.png';
+
+var img7 = document.createElement("img7");
+img7.src = 'black_bishop.png';
+
+var img8 = document.createElement("img8");
+img8.src = 'white_bishop.png';
+
+var img9 = document.createElement("img9");
+img9.src = 'black_queen.png';
+
+var img10 = document.createElement("img10");
+img10.src = 'white_queen.png';
+
+var img11 = document.createElement("img11");
+img11.src = 'black_king.png';
+
+var img12= document.createElement("img12");
+img12.src = 'white_king.png';
 
 
 // [0] = x coord, [1] = y coord
@@ -143,54 +177,33 @@ function setPieceHoldEvents() {
     });
 }
 
-//function to set pieces after button click 
-// function setRedemptionMarket(){
-//     const pawn = document.getElementById("pawn");
-//     pawn.addEventListener("click", function(){
-//         if(whiteScore >= 20){
-//             whiteScore -= 20;
-//             // load pawn back in board
-//             // loads pawn piece back in the constant "starter position area" ?
-//             loadPiece('p', starterPosition);
-//             loadPosition(startingPosition, curPlayer);
-//         }
-//     });
-//     const pawnButton = document.getElementById("pawn_button");
-//     pawnButton.addEventListener("click", function(){
-//         if(blackScore >= 20){
-//             blackScore -= 20;
-//             // load pawn back in board
-//             // loads pawn piece back in the constant "starter position area" ?
-//             loadPiece('P', starterPosition);
-//             loadPosition(startingPosition, curPlayer);
-//         }
-//     });
-
-//     document.getElementById("rook_button").addEventListener("click", putRookBack());
-//     document.getElementById("bishop_button").addEventListener("click", function(){
-//         putBishopBack();
-//     });
-//     document.getElementById("knight_button").addEventListener("click", function(){
-//         putKnightBack();
-//     });
-//     document.getElementById("queen_button").addEventListener("click", function(){
-//         putQueenBack();
-//     });
+function setRedemptionMarket(){
+    document.getElementById("pawn_button").addEventListener("click", putPawnBack());
+    document.getElementById("rook_button").addEventListener("click", putRookBack());
+    document.getElementById("bishop_button").addEventListener("click", function(){
+        putBishopBack();
+    });
+    document.getElementById("knight_button").addEventListener("click", function(){
+        putKnightBack();
+    });
+    document.getElementById("queen_button").addEventListener("click", function(){
+        putQueenBack();
+    });
     
-//     document.getElementById("rook").addEventListener("click", function(){
-//         putRookBack();
-//     });
-//     document.getElementById("bishop").addEventListener("click", function(){
-//         putBishopBack();
-//     });
-//     document.getElementById("knight").addEventListener("click", function(){
-//         putKnightBack();
-//     });
-//     document.getElementById("queen").addEventListener("click", function(){
-//         putQueenBack();
-//     });
+    document.getElementById("rook").addEventListener("click", function(){
+        putRookBack();
+    });
+    document.getElementById("bishop").addEventListener("click", function(){
+        putBishopBack();
+    });
+    document.getElementById("knight").addEventListener("click", function(){
+        putKnightBack();
+    });
+    document.getElementById("queen").addEventListener("click", function(){
+        putQueenBack();
+    });
 
-// }
+}
 
 
 //checks movement
@@ -505,7 +518,7 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
                     $(piecedead).append(img);
                 break;
                 case 'K':
-                    if(!alert('GAME OVER')){window.location.reload();}
+                    if(!alert('GAME OVER\nClick OK to start a new game')){window.location.reload();}
                 break;
 
                 // add score for black
@@ -535,7 +548,7 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
                     $(piecedead1).append(img);
                 break;
                 case 'k':
-                    if(!alert('GAME OVER')){window.location.reload();}
+                    if(!alert('GAME OVER\nClick OK to start a new game')){window.location.reload();}
                 break;
 
             }
@@ -572,6 +585,8 @@ function putPawnBack(){
     // for white player
     if(whiteScore >= 20){
         whiteScore -= 20;
+        $(score3).html(whiteScore);
+        $(piecedead1).remove('white_pawn.png');
         // load pawn back in board
         // loads pawn piece back in the constant "starter position area" ?
         loadPiece('p', starterPosition);
@@ -580,6 +595,11 @@ function putPawnBack(){
 
     if(blackScore >= 20){
         blackScore -= 20;
+        $(score4).html(blackScore);
+        var img = document.createElement("img");
+        img.src = 'black_pawn.png';
+        $(piecedead).remove(img);
+
         // load pawn back in board
         // loads pawn piece back in the constant "starter position area" ?
         loadPiece('P', starterPosition);
@@ -594,6 +614,8 @@ function putQueenBack(){
     // check if score is enough for queen
     if(whiteScore >= 75){
         whiteScore -= 75;
+        $(score3).html(whiteScore);
+
         /* load queen back in board at position 0, 0 
             (lets just say it'll start at beginning position)
             use loadPiece function?
@@ -603,6 +625,8 @@ function putQueenBack(){
     }
     if(blackScore >= 75){
         blackScore -= 75;
+        $(score4).html(blackScore);
+
         // load queen back in board
         loadPiece('Q', starterPosition);
         loadPosition(startingPosition, curPlayer);
@@ -612,6 +636,8 @@ function putQueenBack(){
 function putBishopBack(){
     if(whiteScore >= 40){
         whiteScore -= 40;
+        $(score3).html(whiteScore);
+
         // load Bishop back in board
         loadPiece('b', starterPosition);
         loadPosition(startingPosition, curPlayer);
@@ -619,6 +645,8 @@ function putBishopBack(){
 
     if(blackScore >= 40){
         blackScore -= 40;
+        $(score4).html(blackScore);
+
         // load Bishop back in board
         loadPiece('B', starterPosition);
         loadPosition(startingPosition, curPlayer);
@@ -628,6 +656,8 @@ function putBishopBack(){
 function putKnightBack(){
     if(whiteScore >= 50){
         whiteScore -= 50;
+        $(score3).html(whiteScore);
+
         // load Knight back in board
         loadPiece('n', starterPosition);
         loadPosition(startingPosition, curPlayer);
@@ -635,6 +665,8 @@ function putKnightBack(){
 
     if(blackScore >= 50){
         blackScore -= 50;
+        $(score4).html(blackScore);
+
         // load Knight back in board
         loadPiece('N', starterPosition);
         loadPosition(startingPosition, curPlayer);
@@ -644,32 +676,23 @@ function putKnightBack(){
 function putRookBack(){
     if(whiteScore >= 40){
         whiteScore -= 40;
+        $(score3).html(whiteScore);
+
         // load Rook back in board
         loadPiece('r', starterPosition);
         loadPosition(startingPosition, curPlayer);
     }
+
+    if(blackScore >= 40){
+        blackScore -= 40;
+        $(score4).html(blackScore);
+
+        // load Rook back in board
+        loadPiece('R', starterPosition);
+        loadPosition(startingPosition, curPlayer);
+    }
 }
 
-let pawn = document.getElementById("pawn");
-pawn.addEventListener("click", function(){
-    if(whiteScore >= 20){
-        whiteScore -= 20;
-        // load pawn back in board
-        // loads pawn piece back in the constant "starter position area" ?
-        loadPiece('p', starterPosition);
-        loadPosition(startingPosition, curPlayer);
-    }
-});
-let pawnButton = document.getElementById("pawn_button");
-pawnButton.addEventListener("click", function(){
-    if(blackScore >= 20){
-        blackScore -= 20;
-        // load pawn back in board
-        // loads pawn piece back in the constant "starter position area" ?
-        loadPiece('P', starterPosition);
-        loadPosition(startingPosition, curPlayer);
-    }
-});
 
 startGame();
 setPieceHoldEvents();

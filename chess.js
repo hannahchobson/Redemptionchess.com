@@ -418,6 +418,15 @@ function isEnemyPieceOnEndingPosition(endingPosition) {
         // checks if piece is white or black (if black pawn is taken by white pawn, white pawn will show on board)
         if (destinationPiece == destinationPiece.toUpperCase() && curPlayer == 'white' || destinationPiece == destinationPiece.toLowerCase() && curPlayer == 'black') {
             // put score values for blackScore / whiteScore here
+            switch(destinationPiece){
+                // add score for white
+                case 'K':
+                    if(!alert('GAME OVER\nClick OK to start a new game')){window.location.reload();}
+                break;
+                case 'k':
+                    if(!alert('GAME OVER\nClick OK to start a new game')){window.location.reload();}
+                break;
+            }
             return true;
         } else {
             return false;
